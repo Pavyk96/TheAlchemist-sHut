@@ -15,6 +15,7 @@ namespace TheAlchemist_sHut.Controller
         public Player Player { get; set; }
 
         public static bool goUp, goDown, goRight, goLeft;
+        public static bool IsMoving = false;
 
         public static void StartMove(KeyEventArgs e)
         {
@@ -66,6 +67,21 @@ namespace TheAlchemist_sHut.Controller
 
         public static void MakeMove(PictureBox player)
         {
+            foreach (Control control in Form1.ActiveForm.Controls)
+            {
+                if (control is PictureBox && !(control.Name == "player")
+                    && player.Bounds.IntersectsWith(control.Bounds))
+                {
+                    if (player.Left > control.Left && player.Left < control.Right)
+                        goLeft = false;
+                    if (player.Right < control.Right && player.Right > control.Left)
+                        goRight = false;
+                    if (player.Top > control.Top && player.Top < control.Bottom)
+                        goUp = false;
+                    if (player.Bottom < control.Bottom && player.Bottom > control.Top)
+                        goDown = false;
+                }
+            }
             if (goLeft == true && player.Left > 0)
                 player.Left -= Player.Speed;
             if (goRight == true && player.Left + player.Width < 1920)
