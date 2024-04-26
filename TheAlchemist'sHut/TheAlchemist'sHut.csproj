@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\GameController.cs" />
+    <Compile Include="Controller\PlayerMove.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="View\Form1.cs">
       <SubType>Form</SubType>
@@ -84,7 +84,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\player.png" />
+    <Folder Include="bin\Debug\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

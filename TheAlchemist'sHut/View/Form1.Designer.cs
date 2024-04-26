@@ -19,9 +19,9 @@
             }
             base.Dispose(disposing);
         }
-
-        private System.Windows.Forms.PictureBox Player;
         private System.Windows.Forms.Timer GameTimer;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
