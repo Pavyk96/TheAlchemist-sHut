@@ -85,6 +85,25 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
+    <Folder Include="Textures\Map\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Textures\PlayerAnimation\tile000.png" />
+    <Content Include="Textures\PlayerAnimation\tile001.png" />
+    <Content Include="Textures\PlayerAnimation\tile002.png" />
+    <Content Include="Textures\PlayerAnimation\tile003.png" />
+    <Content Include="Textures\PlayerAnimation\tile004.png" />
+    <Content Include="Textures\PlayerAnimation\tile005.png" />
+    <Content Include="Textures\PlayerAnimation\tile006.png" />
+    <Content Include="Textures\PlayerAnimation\tile007.png" />
+    <Content Include="Textures\PlayerAnimation\tile008.png" />
+    <Content Include="Textures\PlayerAnimation\tile009.png" />
+    <Content Include="Textures\PlayerAnimation\tile010.png" />
+    <Content Include="Textures\PlayerAnimation\tile011.png" />
+    <Content Include="Textures\PlayerAnimation\tile012.png" />
+    <Content Include="Textures\PlayerAnimation\tile013.png" />
+    <Content Include="Textures\PlayerAnimation\tile014.png" />
+    <Content Include="Textures\PlayerAnimation\tile015.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
