@@ -13,7 +13,7 @@ namespace TheAlchemist_sHut
         public Form1()
         {
             InitializeComponent();
-            SetUp();
+            SetUp(); 
         }
 
         private void InitializeComponent()

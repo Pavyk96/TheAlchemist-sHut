@@ -19,7 +19,7 @@ namespace TheAlchemist_sHut.Controller
             {
                 player.x -= player.speed;
                 AnimatePlayer(player ,4, 7);
-            }
+            } 
             else if (player.goRight && player.x + player.width <= form.Width)
             {
                 player.x += player.speed;

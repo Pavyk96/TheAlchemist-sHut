@@ -33,7 +33,7 @@ namespace TheAlchemist_sHut.Model
         {
             x = 0;
             y = 0;
-            speed = 6;
+            speed = 6; 
             holdingItem = false;
 
             playerMovements = Directory.GetFiles("Textures/PlayerAnimation", "*.png").ToList();
