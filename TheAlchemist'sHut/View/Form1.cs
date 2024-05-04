@@ -4,12 +4,14 @@ using System.Drawing;
 using System.Windows.Forms;
 using TheAlchemist_sHut.Controller;
 using TheAlchemist_sHut.Model;
+using TheAlchemist_sHut.Model.Objects;
 
 namespace TheAlchemist_sHut
 {
     public partial class Form1 : Form
     {
-        public Player player = new Player();
+        public static Player player = new Player();
+        public static Map map = new Map();
         public Form1()
         {
             InitializeComponent();
@@ -73,7 +75,6 @@ namespace TheAlchemist_sHut
         { 
             base.OnPaint(e); 
             e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), ClientRectangle);
-
         }
 
         private void MainTimerEvent(object sender, EventArgs e)
@@ -81,12 +82,27 @@ namespace TheAlchemist_sHut
             PlayerMove.MakeMove(player, this);
 
             Invalidate();
-            label1.Text = "X: " + player.x;
-            label2.Text = "Y: " + player.y;
+            label1.Text = "(X,Y) : " + '(' + player.X + ',' + player.Y + ')';
+            label2.Text = "IsHoldingItems: " + player.HoldingItem + "            Items: " + player.Item;
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.E)
+            {
+                foreach (var box in map.Boxes)
+                {
+                    if (player.Bounds.IntersectsWith(box.Bounds))
+                    {
+                        InteractionItems.PickItems(box.ItemInBox, player);
+                        break;
+                    }
+                }
+            }
+            
+            if (e.KeyCode == Keys.Q)
+                InteractionItems.ThrowItem(player);
+            
             PlayerMove.StartMove(e, player);
         }
 
@@ -99,7 +115,13 @@ namespace TheAlchemist_sHut
         private void FormPaintEvent(object sender, PaintEventArgs e)
         {
             Graphics Canvas = e.Graphics;
-            Canvas.DrawImage(player.playerImg, player.x, player.y, player.width, player.height);
+            Canvas.DrawImage(player.PlayerImg, player.X, player.Y, player.Width, player.Height);
+            foreach (var box in map.Boxes)
+            {
+                Canvas.DrawImage(box.BoxImg, box.X, box.Y, box.Width, box.Height);
+            }
+            if (player.Item != null)
+                Canvas.DrawImage(player.Item.ItemImg, player.Item.X, player.Item.Y, player.Item.Width,player.Item.Height);
         }
 
         private void SetUp()

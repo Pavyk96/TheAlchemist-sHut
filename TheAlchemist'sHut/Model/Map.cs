@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheAlchemist_sHut.Model.Objects;
 
 namespace TheAlchemist_sHut.Model
 {
-    class Map
+    public class Map
     {
-        public int Width { get; }
-        public int Height { get; }
+        public List<IBox> Boxes { get; set; }
 
-        public Map (int width, int height)
+        public Map ()
         {
-            Width = width;
-            Height = height;
+            Boxes = new List<IBox> { 
+                new BoxFrog(), 
+                new BoxPumpkin(),
+                new BoxChilliPaper()
+            };
         }
     }
 }

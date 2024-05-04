@@ -10,34 +10,39 @@ namespace TheAlchemist_sHut.Model
 {
     public class Player
     {
-        public int x { get; set; }
-        public int y { get; set; }
-        public int speed {  get; set; }
-        public bool holdingItem { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int Speed {  get; set; }
+        public bool HoldingItem { get; set; }
 
-        public bool goUp, goDown, goRight, goLeft;
+        public bool GoUp, GoDown, GoRight, GoLeft;
 
-        public Image playerImg;
+        public Image PlayerImg;
 
-        public int height = 72;
+        public readonly int Height = 72;
 
-        public int width = 72;
+        public readonly int Width = 72;
 
-        public List<string> playerMovements = new List<string>();
+        public List<string> PlayerMovements = new List<string>();
 
-        public int step = 0;
+        public int Step = 0;
 
-        public int slowDownFrameRate = 0;
+        public int SlowDownFrameRate = 0;
+
+        public IItems Item;
+        public Rectangle Bounds => new Rectangle(X, Y, Width, Height);
 
         public Player() 
         {
-            x = 0;
-            y = 0;
-            speed = 6; 
-            holdingItem = false;
+            X = 0;
+            Y = 0;
+            Speed = 6; 
+            HoldingItem = false;
 
-            playerMovements = Directory.GetFiles("Textures/PlayerAnimation", "*.png").ToList();
-            playerImg = Image.FromFile(playerMovements[0]);
+            PlayerMovements = Directory.GetFiles("Textures/PlayerAnimation", "*.png").ToList();
+            PlayerImg = Image.FromFile(PlayerMovements[0]);
+
+            Item = null;
         }
     }
 }
