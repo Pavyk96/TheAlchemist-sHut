@@ -15,24 +15,28 @@ namespace TheAlchemist_sHut.Controller
     {
         public static void MakeMove(Player player, Form1 form)
         {
-            if (player.goLeft && player.x >= 0)
+            if (player.GoLeft && player.X >= 0)
             {
-                player.x -= player.speed;
+                player.X -= player.Speed;
+                if (player.Item != null) player.Item.X -= player.Speed;
                 AnimatePlayer(player ,4, 7);
             } 
-            else if (player.goRight && player.x + player.width <= form.Width)
+            else if (player.GoRight && player.X + player.Width <= form.Width)
             {
-                player.x += player.speed;
+                player.X += player.Speed;
+                if (player.Item != null) player.Item.X += player.Speed;
                 AnimatePlayer(player, 8, 11);
             }
-            else if (player.goUp && player.y >= 0)
+            else if (player.GoUp && player.Y >= 0)
             {
-                player.y -= player.speed;
+                player.Y -= player.Speed;
+                if (player.Item != null) player.Item.Y -= player.Speed;
                 AnimatePlayer(player, 12, 15);
             }
-            else if (player.goDown && player.y + player.height <= form.Height)
+            else if (player.GoDown && player.Y + player.Height <= form.Height)
             {
-                player.y += player.speed;
+                player.Y += player.Speed;
+                if (player.Item != null) player.Item.Y += player.Speed;
                 AnimatePlayer(player, 0, 3);
             }
             else
@@ -43,19 +47,19 @@ namespace TheAlchemist_sHut.Controller
 
         private static void AnimatePlayer(Player player ,int start, int end)
         {
-            player.slowDownFrameRate += 1;
+            player.SlowDownFrameRate += 1;
 
-            if (player.slowDownFrameRate == 4)
+            if (player.SlowDownFrameRate == 4)
             {
-                player.step++;
-                player.slowDownFrameRate = 0;
+                player.Step++;
+                player.SlowDownFrameRate = 0;
             }
 
 
-            if (player.step > end || player.step < start)
-                player.step = start;
+            if (player.Step > end || player.Step < start)
+                player.Step = start;
 
-            player.playerImg = Image.FromFile(player.playerMovements[player.step]);
+            player.PlayerImg = Image.FromFile(player.PlayerMovements[player.Step]);
         }
 
         public static void StartMove(KeyEventArgs e, Player player)
@@ -65,19 +69,19 @@ namespace TheAlchemist_sHut.Controller
             switch (key)
             {
                 case Keys.A:
-                    player.goLeft = true;
+                    player.GoLeft = true;
                     break;
 
                 case Keys.D:
-                    player.goRight = true;
+                    player.GoRight = true;
                     break;
 
                 case Keys.W:
-                    player.goUp = true;
+                    player.GoUp = true;
                     break;
 
                 case Keys.S:
-                    player.goDown = true;
+                    player.GoDown = true;
                     break;
             }
         }
@@ -89,19 +93,19 @@ namespace TheAlchemist_sHut.Controller
             switch (key)
             {
                 case Keys.A:
-                    player.goLeft = false;
+                    player.GoLeft = false;
                     break;
 
                 case Keys.D:
-                    player.goRight = false;
+                    player.GoRight = false;
                     break;
 
                 case Keys.W:
-                    player.goUp = false;
+                    player.GoUp = false;
                     break;
 
                 case Keys.S:
-                    player.goDown = false;
+                    player.GoDown = false;
                     break;
             }
         }
