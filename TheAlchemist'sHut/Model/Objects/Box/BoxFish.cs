@@ -1,8 +1,14 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TheAlchemist_sHut.Model;
 
 namespace TheAlchemist_sHut.Model.Objects
 {
-    public class BoxRockman : IBox, IMap
+    public class BoxFish : IBox, IMap
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -12,13 +18,13 @@ namespace TheAlchemist_sHut.Model.Objects
         public Image Img { get; set; }
         public Rectangle Bounds => new Rectangle(X, Y, Width, Height);
 
-        public BoxRockman()
-        {
+        public BoxFish()
+        { 
             X = 38;
-            Y = 93;
+            Y = 525;
             Width = 63;
             Height = 59;
-            ItemInBox = new ItemRockman();
+            ItemInBox = new ItemFish();
             Img = Image.FromFile("Textures/Box/tile000.png");
         }
     }

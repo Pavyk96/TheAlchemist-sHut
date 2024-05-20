@@ -11,41 +11,44 @@ using TheAlchemist_sHut.Model;
 
 namespace TheAlchemist_sHut.Controller
 {
+    public enum PlayerDirection
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
     public class PlayerMove
     {
         public static void MakeMove(Player player, Form1 form)
         {
+            InteractionItems.CheckCollisions(player);
             if (player.GoLeft && player.X >= 0)
             {
                 player.X -= player.Speed;
-                if (player.Item != null) player.Item.X -= player.Speed;
-                AnimatePlayer(player ,4, 7);
-            } 
+                AnimatePlayer(player, 4, 7);
+            }
             else if (player.GoRight && player.X + player.Width <= form.Width)
             {
                 player.X += player.Speed;
-                if (player.Item != null) player.Item.X += player.Speed;
                 AnimatePlayer(player, 8, 11);
             }
             else if (player.GoUp && player.Y >= 0)
             {
                 player.Y -= player.Speed;
-                if (player.Item != null) player.Item.Y -= player.Speed;
                 AnimatePlayer(player, 12, 15);
             }
             else if (player.GoDown && player.Y + player.Height <= form.Height)
             {
                 player.Y += player.Speed;
-                if (player.Item != null) player.Item.Y += player.Speed;
                 AnimatePlayer(player, 0, 3);
             }
             else
-            {
                 AnimatePlayer(player, 0, 0);
-            }
         }
 
-        private static void AnimatePlayer(Player player ,int start, int end)
+        private static void AnimatePlayer(Player player, int start, int end)
         {
             player.SlowDownFrameRate += 1;
 
@@ -54,57 +57,51 @@ namespace TheAlchemist_sHut.Controller
                 player.Step++;
                 player.SlowDownFrameRate = 0;
             }
-
-
             if (player.Step > end || player.Step < start)
                 player.Step = start;
 
             player.PlayerImg = Image.FromFile(player.PlayerMovements[player.Step]);
         }
 
-        public static void StartMove(KeyEventArgs e, Player player)
+        public static void StartMove(PlayerDirection direction, Player player)
         {
-            var key = e.KeyCode;
-
-            switch (key)
+            switch (direction)
             {
-                case Keys.A:
+                case PlayerDirection.Left:
                     player.GoLeft = true;
                     break;
 
-                case Keys.D:
+                case PlayerDirection.Right:
                     player.GoRight = true;
                     break;
 
-                case Keys.W:
+                case PlayerDirection.Up:
                     player.GoUp = true;
                     break;
 
-                case Keys.S:
+                case PlayerDirection.Down:
                     player.GoDown = true;
                     break;
             }
         }
 
-        public static void StopMove(KeyEventArgs e, Player player)
+        public static void StopMove(PlayerDirection direction, Player player)
         {
-            var key = e.KeyCode;
-
-            switch (key)
+            switch (direction)
             {
-                case Keys.A:
+                case PlayerDirection.Left:
                     player.GoLeft = false;
                     break;
 
-                case Keys.D:
+                case PlayerDirection.Right:
                     player.GoRight = false;
                     break;
 
-                case Keys.W:
+                case PlayerDirection.Up:
                     player.GoUp = false;
                     break;
 
-                case Keys.S:
+                case PlayerDirection.Down:
                     player.GoDown = false;
                     break;
             }

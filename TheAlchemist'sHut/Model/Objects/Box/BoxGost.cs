@@ -2,24 +2,24 @@
 
 namespace TheAlchemist_sHut.Model.Objects
 {
-    public class BoxGost : IBox
+    public class BoxGost : IBox, IMap
     {
         public int X { get; set; }
         public int Y { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         public IItems ItemInBox { get; set; }
-        public Image BoxImg { get; set; }
-        public Rectangle Bounds => new Rectangle(X + 10, Y + 10, Width, Height);
+        public Image Img { get; set; }
+        public Rectangle Bounds => new Rectangle(X, Y, Width, Height);
 
         public BoxGost()
         {
-            X = 200;
-            Y = 400;
-            Width = 56;
-            Height = 56;
+            X = 38;
+            Y = 309;
+            Width = 63;
+            Height = 59;
             ItemInBox = new ItemGhost();
-            BoxImg = Image.FromFile("Textures/Box/tile000.png");
+            Img = Image.FromFile("Textures/Box/tile000.png");
         }
     }
 }

@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,24 +66,44 @@
   <ItemGroup>
     <Compile Include="Controller\InteractionItems.cs" />
     <Compile Include="Controller\PlayerMove.cs" />
-    <Compile Include="Model\Items\ItemFrog.cs" />
+    <Compile Include="Model\Boiler.cs" />
+    <Compile Include="Model\Map\IMap.cs" />
+    <Compile Include="Model\Items\ItemSpook.cs" />
+    <Compile Include="Model\Items\ItemGelatine.cs" />
     <Compile Include="Model\Items\ItemGhost.cs" />
     <Compile Include="Model\Items\IItems.cs" />
+    <Compile Include="Model\Items\ItemFish.cs" />
+    <Compile Include="Model\Items\ItemPepper.cs" />
     <Compile Include="Model\Items\ItemRockman.cs" />
-    <Compile Include="Model\Items\ItemPumpkin.cs" />
-    <Compile Include="Model\Objects\Box\BoxFrog.cs" />
+    <Compile Include="Model\Items\ItemMane.cs" />
+    <Compile Include="Model\Objects\Box\BoxSpook.cs" />
+    <Compile Include="Model\Objects\Box\BoxGelatine.cs" />
     <Compile Include="Model\Objects\Box\BoxGost.cs" />
-    <Compile Include="Model\Objects\Box\BoxPumpkin.cs" />
+    <Compile Include="Model\Objects\Box\BoxFish.cs" />
+    <Compile Include="Model\Objects\Box\BoxPepper.cs" />
+    <Compile Include="Model\Objects\Box\BoxMane.cs" />
     <Compile Include="Model\Objects\Box\BoxRockman.cs" />
     <Compile Include="Model\Objects\Box\IBox.cs" />
     <Compile Include="Model\Player.cs" />
+    <Compile Include="Model\Potions\IPotion.cs" />
+    <Compile Include="Model\Potions\PotionBad.cs" />
+    <Compile Include="Model\Potions\PotionBones.cs" />
+    <Compile Include="Model\Potions\PotionHappy.cs" />
+    <Compile Include="Model\Potions\PotionInviz.cs" />
+    <Compile Include="Model\Potions\PotionMonster.cs" />
+    <Compile Include="Model\Potions\PotionPower.cs" />
+    <Compile Include="Model\Potions\PotionSpeed.cs" />
+    <Compile Include="Model\Potions\PotionTalkative.cs" />
+    <Compile Include="Model\Potions\PotionTruth.cs" />
+    <Compile Include="Model\Table.cs" />
+    <Compile Include="Model\Visitor.cs" />
     <Compile Include="View\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Map.cs" />
+    <Compile Include="Model\Map\Map.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\Form1.resx">
@@ -96,19 +134,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
-    <Folder Include="Textures\Map\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Textures\Box\tile000.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Textures\Box\tile005.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Textures\Items\chilli_paper.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Textures\Items\frog4x.png">
+    <Content Include="Textures\Items\fish.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Textures\Items\gelatine4x.png">
@@ -117,16 +151,19 @@
     <Content Include="Textures\Items\ghost4x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Textures\Items\ice.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Textures\Items\pumpkin.png">
+    <Content Include="Textures\Items\horseman.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Textures\Items\rockman4x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Textures\Items\ruby.png">
+    <Content Include="Textures\Items\spook.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Map\boiler.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Map\table.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Textures\PlayerAnimation\tile000.png" />
@@ -145,9 +182,48 @@
     <Content Include="Textures\PlayerAnimation\tile013.png" />
     <Content Include="Textures\PlayerAnimation\tile014.png" />
     <Content Include="Textures\PlayerAnimation\tile015.png" />
-    <Content Include="Textures\Potions\tile062.png">
+    <Content Include="Textures\Potions\potionBad.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Textures\Potions\potionBones.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Potions\potionHappy.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Potions\potionInviz.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Potions\potionMonster.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Potions\potionPower.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Potions\potionSpeed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Potions\potionTalkative.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Potions\potionTruth.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Visitors\visitor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
