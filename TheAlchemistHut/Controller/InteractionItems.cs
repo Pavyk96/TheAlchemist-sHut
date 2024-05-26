@@ -10,13 +10,11 @@ namespace TheAlchemist_sHut.Controller
 {
     public class InteractionItems
     {
-        private static Random rnd = new Random();
+
         public static void PickItems(IItems item, Player player)
         {
             player.Item = item;
             player.HoldingItem = true;
-            //player.Item.X = player.X + (player.Width - item.Width) / 2;
-            //player.Item.Y = player.Y - 30;
         }
         
         public static void ThrowItem(Player player)
@@ -30,7 +28,6 @@ namespace TheAlchemist_sHut.Controller
             var firstIngredient = boiler.AddedIngredients[0].Name;
             var secondIngredient = boiler.AddedIngredients[1].Name;
             var thirdIngredient = boiler.AddedIngredients[2].Name;
-
             if (firstIngredient == "Спук"
                 && secondIngredient == "Призрак"
                 && thirdIngredient == "Грива")
