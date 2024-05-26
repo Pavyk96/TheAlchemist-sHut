@@ -25,12 +25,11 @@ namespace TheAlchemist_sHut.Controller
             player.HoldingItem = false;
         }
 
-        public static void GetPotion(Player player)
+        public static void GetPotion(Player player, Boiler boiler)
         {
-            var map = TheAlchemist_sHut.Form1.map;
-            var firstIngredient = map.Boiler.AddedIngredients[0].Name;
-            var secondIngredient = map.Boiler.AddedIngredients[1].Name;
-            var thirdIngredient = map.Boiler.AddedIngredients[2].Name;
+            var firstIngredient = boiler.AddedIngredients[0].Name;
+            var secondIngredient = boiler.AddedIngredients[1].Name;
+            var thirdIngredient = boiler.AddedIngredients[2].Name;
 
             if (firstIngredient == "Спук"
                 && secondIngredient == "Призрак"
@@ -139,7 +138,7 @@ namespace TheAlchemist_sHut.Controller
                 player.HoldingItem = true;
             }
 
-            map.Boiler.AddedIngredients.Clear();
+            boiler.AddedIngredients.Clear();
         }
 
         public static void GiveOrder(Player player, Visitor visitor)

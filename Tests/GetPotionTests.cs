@@ -20,7 +20,7 @@ public class GetPotionTests
         map.Boiler.AddedIngredients.Add(new ItemGhost());
         map.Boiler.AddedIngredients.Add(new ItemMane());
 
-        InteractionItems.GetPotion(player);
+        InteractionItems.GetPotion(player, map.Boiler);
 
         Assert.AreEqual(typeof(PotionHappy), player.Potion.GetType());
         Assert.IsTrue(player.HoldingItem);
@@ -35,7 +35,7 @@ public class GetPotionTests
         map.Boiler.AddedIngredients.Add(new ItemGhost());
         map.Boiler.AddedIngredients.Add(new ItemGelatine());
 
-        InteractionItems.GetPotion(player);
+        InteractionItems.GetPotion(player, map.Boiler);
 
         Assert.AreEqual(typeof(PotionPower), player.Potion.GetType());
         Assert.IsTrue(player.HoldingItem);
@@ -50,7 +50,7 @@ public class GetPotionTests
         map.Boiler.AddedIngredients.Add(new ItemPepper());
         map.Boiler.AddedIngredients.Add(new ItemGhost());
 
-        InteractionItems.GetPotion(player);
+        InteractionItems.GetPotion(player, map.Boiler);
 
         Assert.AreEqual(typeof(PotionSpeed), player.Potion.GetType());
         Assert.IsTrue(player.HoldingItem);
@@ -65,7 +65,7 @@ public class GetPotionTests
         map.Boiler.AddedIngredients.Add(new ItemRockman());
         map.Boiler.AddedIngredients.Add(new ItemFish());
 
-        InteractionItems.GetPotion(player);
+        InteractionItems.GetPotion(player, map.Boiler);
 
         Assert.AreEqual(typeof(PotionMonster), player.Potion.GetType());
         Assert.IsTrue(player.HoldingItem);
@@ -80,7 +80,7 @@ public class GetPotionTests
         map.Boiler.AddedIngredients.Add(new ItemMane());
         map.Boiler.AddedIngredients.Add(new ItemPepper());
 
-        InteractionItems.GetPotion(player);
+        InteractionItems.GetPotion(player, map.Boiler);
 
         Assert.AreEqual(typeof(PotionInviz), player.Potion.GetType());
         Assert.IsTrue(player.HoldingItem);
@@ -95,7 +95,7 @@ public class GetPotionTests
         map.Boiler.AddedIngredients.Add(new ItemSpook());
         map.Boiler.AddedIngredients.Add(new ItemRockman());
 
-        InteractionItems.GetPotion(player);
+        InteractionItems.GetPotion(player, map.Boiler);
 
         Assert.AreEqual(typeof(PotionTruth), player.Potion.GetType());
         Assert.IsTrue(player.HoldingItem);
@@ -110,7 +110,7 @@ public class GetPotionTests
         map.Boiler.AddedIngredients.Add(new ItemFish());
         map.Boiler.AddedIngredients.Add(new ItemSpook());
 
-        InteractionItems.GetPotion(player);
+        InteractionItems.GetPotion(player, map.Boiler);
 
         Assert.AreEqual(typeof(PotionBones), player.Potion.GetType());
         Assert.IsTrue(player.HoldingItem);
@@ -125,7 +125,7 @@ public class GetPotionTests
         map.Boiler.AddedIngredients.Add(new ItemPepper());
         map.Boiler.AddedIngredients.Add(new ItemMane());
 
-        InteractionItems.GetPotion(player);
+        InteractionItems.GetPotion(player, map.Boiler);
 
         Assert.AreEqual(typeof(PotionTalkative), player.Potion.GetType());
         Assert.IsTrue(player.HoldingItem);
@@ -140,7 +140,7 @@ public class GetPotionTests
         map.Boiler.AddedIngredients.Add(new ItemGhost());
         map.Boiler.AddedIngredients.Add(new ItemFish());
 
-        InteractionItems.GetPotion(player);
+        InteractionItems.GetPotion(player, map.Boiler);
 
         Assert.AreEqual(typeof(PotionBad), player.Potion.GetType());
         Assert.IsTrue(player.HoldingItem);

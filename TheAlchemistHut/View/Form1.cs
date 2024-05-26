@@ -165,7 +165,7 @@ namespace TheAlchemist_sHut
                         InteractionItems.ThrowItem(player);
                     }
                     if (map.Boiler.AddedIngredients.Count == 3)
-                        InteractionItems.GetPotion(player);
+                        InteractionItems.GetPotion(player, map.Boiler);
                 }
                 else
                     InteractionItems.ThrowItem(player);
